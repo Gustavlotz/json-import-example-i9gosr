@@ -1,0 +1,47 @@
+<h1>Hello Angular 7</h1>
+<p>
+  Starting with version 7 Angular now uses Typescript 3, which means that you can <strong>import</strong> your json files directly. You can stop <em>http.getting</em> them now, causing an extra unnecessary network request!
+</p>
+
+<p>All you have to do is find your central <code>tsconfig.json</code> file in the root of your proyect and add this three options to the compiler</p>
+
+<ul>
+  <li>resolveJsonModule</li>
+  <li>esModuleInterop</li>
+  <li>allowSyntheticDefaultImports</li>
+</ul>
+
+<p>Like this:</p>
+
+<pre>{{
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "module": "es2015",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  }
+}
+| json }}</pre>
+
+<section>
+  <p>The next list of XKCD comic data is imported from a json file in <code>src/assets/data/</code>:</p>
+
+  <app-xkcd-comic *ngFor="let comic of comicsList" [comic]="comic"></app-xkcd-comic>
+</section>
